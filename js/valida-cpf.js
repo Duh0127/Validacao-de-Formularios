@@ -2,13 +2,13 @@ export default function ehUmCPF(campo) {
     const cpf = campo.value.replace(/\.|-/g, "");
     
     if(validaNumerosRepetidos(cpf) || validaPrimeiroDigito(cpf) || validaSegundoDigito(cpf)){
-        console.log("Esse CPF não existe!");
+        campo.setCustomValidity('Esse CPF não é Válido!');
     }
-    else{
-        console.log("CPF VÁLIDO!");
-    }
+    //se as funções retornarem algum valor, ele executa uma mensagem pro CustomValidity que o CPF não é válido!
 }
 // export default = quando esse arquivo for chamado, ele vai ser executado, por default, esse função, no outro arquivo js
+
+
 
 function validaNumerosRepetidos(cpf) {
     const numerosRepetidos = [
@@ -23,9 +23,10 @@ function validaNumerosRepetidos(cpf) {
     '88888888888',
     '99999999999'
     ]
-
     return numerosRepetidos.includes(cpf)
 }
+
+
 
 
 function validaPrimeiroDigito(cpf){
@@ -45,6 +46,7 @@ function validaPrimeiroDigito(cpf){
 
     return soma != cpf[9];
 }
+
 
 
 function validaSegundoDigito(cpf){
